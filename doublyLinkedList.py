@@ -11,14 +11,13 @@ class doublyLinkedList:
         self.head = None
 
 
-
+    #Insertion
     def insertHead(self, new_Node):
         cur = self.head
         if not self.head:
             newNode = Node(new_Node)
             self.head = newNode
-            # self.head.prev = None
-
+            
 
         else:
             newNode = Node(new_Node)
@@ -102,11 +101,16 @@ class doublyLinkedList:
             self.insertHead(new_Node)
             return
 
+
         else:
             curPosition = 0
             while True:
-                if curPosition == position:                 
-                    newNode = Node(new_Node)
+                if position==self.listLength():
+                    self.append(new_Node)
+                    break
+
+                if curPosition == position:  
+                    newNode = Node(new_Node)               
                     cur.prev = newNode
                     prev.next = newNode 
                     newNode.prev = prev
@@ -115,24 +119,52 @@ class doublyLinkedList:
                 prev = cur
                 cur = cur.next
                 curPosition += 1
-               
-                    
+
+    #Deletion
+
+    def delete(self, key):
+        cur = self.head
+        while cur:
+            if cur.data==key and cur==self.head:
+                #case1
+                if not cur.next:
+                    cur = None
+                    self.head = None
+                    return
+
+                #case2
+                else:
+                    next = cur.next
+                    cur.next = None
+                    next.prev = None
+                    cur = None
+                    self.head = next 
+                    return
+
+            #case3
+            elif cur.data==key:
+                if not cur.next:
+                    prev = cur.prev
+                    cur.prev = None
+                    prev.next = None
+                    cur = None
+                    return
+
+            #case4
+                else:
+                    prev = cur.prev
+                    next = cur.next
+                    prev.next = next
+                    next.prev = None
+                    cur.prev = None
+                    cur.next = None
+                    cur = None
+                    return
+            cur = cur.next 
 
 
 
         
-
-        
-
-
-
-            
-            
-
-
-
-
-
     def printList(self):
         cur = self.head
         while cur:
@@ -142,15 +174,10 @@ class doublyLinkedList:
 
 
 
-linkedlist = doublyLinkedList()
-linkedlist.insertHead(10)
-linkedlist.append(20)
-linkedlist.insertBefore(20, 15)
-linkedlist.insertAfter(20, 25)
-linkedlist.insertAfter(15, 17)
-linkedlist.insertAt(5, 23)
-linkedlist.printList()
-linkedlist.listLength()
+        
+
+
+
 
 
 
