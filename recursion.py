@@ -1,10 +1,12 @@
-# iterative recursion approach
+# iterative solution of factorial
+
+
 def fact(n):
-    facsum = 1
+    fac_sum = 1
     if n > 0:
         for i in range(n, 0, -1):
-           facsum *= i
-        return facsum
+           fac_sum *= i
+        return fac_sum
     elif n == 0:
         return 1
     else:
@@ -17,29 +19,41 @@ def recusivefact(n):
     else:
         return n*recusivefact(n-1)
 
+        
+
 #iterative solution of fibonacci
 def fib(n):
     fib1 = 0
     fib2 = 1
-    fibList = [0]
-    while True:
-        if n<=1:
-            return 1
+    if n < 0:
+        print("invalid number")
+    
+    elif n == 0:
+        return fib1
+    
+    elif n == 1:
+        return fib2
 
-        elif fib2>=n:
-            break
-        sum = fib1 + fib2
-        fibList.append(sum)
-        fib1 = fib2
-        fib2 = sum
-    return fibList
+    else:
+        for i in range(2, n+1):
+            sum = fib1 + fib2
+            fib1 = fib2
+            fib2 = sum
+        return sum
+
+
+#Test
+if __name__ =="__main__":
+    n = 9
+    fib(n)
+    
         
 #recursive solution of fibonaci
 def recursivefib(n):
-    if n <=1:
+    if n==1 or n==0:
         return 1
     else:
-        return recursivefib(n-1)+fib(n-2)
+        return recursivefib(n-1)+recursivefib(n-2)
 
         
     
