@@ -1,21 +1,25 @@
 class stack:
     def __init__(self, size):
         self.capacity = size
-        self.arr = [0]*self.capacity
+        self.arr = [None]*self.capacity
         self.top = -1
 
-    # def isFull(self):
-    #     return self.top==self.capacity-1
+    def isFull(self):
+        return self.top==self.capacity-1
+
+    def isEmpty(self):
+        return self.top==-1
+
 
     def push(self, element):
-        if (self.top==self.capacity-1):
+        if self.isFull():
             return 'This stack is already full'
         
         self.top+=1
         self.arr[self.top] = element
 
     def pop(self):
-        if(self.top==-1):
+        if self.isEmpty():
             return 'stack is empty!!!'
 
         temp = self.arr[self.top]
@@ -23,10 +27,6 @@ class stack:
         return temp
 
     
-
-    # def isEmpty(self):
-    #     return 
-
     def printStack(self):
         for i in range(self.top+1):
             print(self.arr[i])
