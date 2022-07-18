@@ -85,6 +85,6 @@ if __name__ == "__main__":
 
     t.delete("pprt")
 
-    print.search("pprt")
+    print(t.search("pprt"))
 
     t.update("mnop", "pprt")
