@@ -32,10 +32,7 @@ class queue:
             return temp
 
         temp = self.arr[self.front]
-        for i in range(self.front, self.rear):
-            self.arr[i]=self.arr[i+1]
-            
-        self.rear-=1
+        self.front+=1
         return temp
 
 
@@ -54,6 +51,7 @@ class queue:
 # myQueue.add(20)
 # myQueue.printQueue()
 # myQueue.delete()
+# myQueue.printQueue()
 
 
 #Circular queue
@@ -82,19 +80,20 @@ class queue:
             return temp
 
         temp = self.arr[self.front]
-        self.front-=1%len(self.arr)
+        self.front+=1%len(self.arr)
         return temp
 
 
-#test
-myQueue = queue(5)
-myQueue.addCircularQueue(4)
-myQueue.addCircularQueue(9)
-myQueue.addCircularQueue(12)
-myQueue.addCircularQueue(13)
-myQueue.addCircularQueue(17)
-myQueue.addCircularQueue(20)
-myQueue.printQueue()
-myQueue.deleteCircularQueue()
+# #test
+# myQueue = queue(5)
+# myQueue.addCircularQueue(4)
+# myQueue.addCircularQueue(9)
+# myQueue.addCircularQueue(12)
+# myQueue.addCircularQueue(13)
+# myQueue.addCircularQueue(17)
+# myQueue.addCircularQueue(20)
+# myQueue.printQueue()
+# myQueue.deleteCircularQueue()
+# myQueue.printQueue()
 
 
